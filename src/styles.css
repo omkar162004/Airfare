@@ -1,0 +1,150 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * APIx design system — "Terminal frost".
+ * Dark instrument console for a statistical release. All colours are oklch
+ * semantic tokens; components must never hardcode colour utilities.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* domain tokens */
+  --color-line: var(--line);
+  --color-faint: var(--faint);
+  --color-up: var(--up);
+  --color-down: var(--down);
+  --color-warn: var(--warn);
+  --color-cyan: var(--cyan);
+
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.17 0.028 260);
+  --foreground: oklch(0.89 0.014 258);
+
+  --card: oklch(0.22 0.031 260);
+  --card-foreground: oklch(0.93 0.012 258);
+  --popover: oklch(0.22 0.031 260);
+  --popover-foreground: oklch(0.93 0.012 258);
+
+  --primary: oklch(0.76 0.126 232);
+  --primary-foreground: oklch(0.17 0.028 260);
+  --secondary: oklch(0.27 0.031 261);
+  --secondary-foreground: oklch(0.9 0.014 258);
+
+  --muted: oklch(0.27 0.031 261);
+  --muted-foreground: oklch(0.69 0.028 262);
+
+  --accent: oklch(0.76 0.126 232);
+  --accent-foreground: oklch(0.17 0.028 260);
+
+  --destructive: oklch(0.65 0.21 15);
+  --destructive-foreground: oklch(0.96 0.01 258);
+
+  --border: oklch(0.34 0.035 262);
+  --input: oklch(0.34 0.035 262);
+  --ring: oklch(0.76 0.126 232);
+
+  --line: oklch(0.34 0.035 262);
+  --faint: oklch(0.53 0.034 263);
+  --up: oklch(0.79 0.145 163);
+  --down: oklch(0.67 0.2 16);
+  --warn: oklch(0.79 0.155 71);
+  --cyan: oklch(0.81 0.127 199);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Frosted instrument panel surface used across the console. */
+@utility frost {
+  background: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--color-foreground) 5.5%, transparent),
+    color-mix(in oklab, var(--color-foreground) 1.2%, transparent)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-foreground) 8%, transparent);
+}
+
+/* Ambient accent wash behind the console. */
+@utility ambient-glow {
+  background:
+    radial-gradient(
+      120% 120% at 15% 0%,
+      color-mix(in oklab, var(--color-primary) 16%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 120% at 90% 100%,
+      color-mix(in oklab, var(--color-cyan) 10%, transparent),
+      transparent 50%
+    );
+}
+
+@utility ambient-grid {
+  background-image:
+    linear-gradient(
+      color-mix(in oklab, var(--color-muted-foreground) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--color-muted-foreground) 6%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 26px 26px;
+}
+
+@utility num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}

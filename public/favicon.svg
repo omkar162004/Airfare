@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071a2f"/>
+      <stop offset="100%" stop-color="#020812"/>
+    </linearGradient>
+
+    <linearGradient id="plane" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#8eeaff"/>
+      <stop offset="100%" stop-color="#159bd7"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" rx="22" fill="url(#bg)"/>
+
+  <!-- Cyan glow -->
+  <circle
+    cx="50"
+    cy="50"
+    r="39"
+    fill="none"
+    stroke="#20d9ff"
+    stroke-width="5"
+    opacity="0.35"
+    filter="url(#glow)"
+  />
+
+  <!-- Cyan ring -->
+  <circle
+    cx="50"
+    cy="50"
+    r="39"
+    fill="none"
+    stroke="#20d9ff"
+    stroke-width="3"
+  />
+
+  <!-- Airplane -->
+  <g
+    transform="rotate(-25 50 50)"
+    fill="url(#plane)"
+    stroke="#ffffff"
+    stroke-width="0.7"
+  >
+
+    <!-- Main fuselage -->
+    <path d="
+      M17 51
+      L43 47
+      L73 27
+      Q79 23 82 26
+      Q84 29 79 33
+      L59 48
+      L82 56
+      Q86 58 84 61
+      Q82 64 77 63
+      L53 55
+      L42 72
+      Q40 75 37 73
+      L39 55
+      L17 53
+      Q14 52 17 51
+      Z
+    "/>
+
+    <!-- Left wing -->
+    <path d="
+      M47 48
+      L27 34
+      L23 35
+      L38 51
+      Z
+    "/>
+
+    <!-- Right wing -->
+    <path d="
+      M52 53
+      L72 69
+      L76 68
+      L61 50
+      Z
+    "/>
+
+    <!-- Tail -->
+    <path d="
+      M39 55
+      L29 67
+      L32 68
+      L43 56
+      Z
+    "/>
+
+  </g>
+</svg>
